@@ -14,6 +14,14 @@ public class Pair {
 		this.key = key;
 		this.value = value;
 	}
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
 	public Pair() {
 		
 	}

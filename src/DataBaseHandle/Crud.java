@@ -42,7 +42,7 @@ UPDATE table_name
 SET column1 = value1, column2 = value2, ...
 WHERE condition; 
 */
-	boolean  updateRecord (String tableName , ArrayList<Pair> values , String Left,String Right )
+	public boolean  updateRecord (String tableName , ArrayList<Pair> values , String Left,String Right )
 	{
 		String sqlStatment= "UPDATE "+tableName+" SET ";
 		for (int i = 0; i < values.size(); i++) {
