@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< HEAD
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
     <servlet>
         <servlet-name>ChangePassWord</servlet-name>
@@ -13,6 +12,18 @@
         <servlet-name>SuspendSurvey</servlet-name>
         <servlet-class>SuspendSurvey</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SuspendUser</servlet-name>
+        <servlet-class>SuspendUser</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LogIn</servlet-name>
+        <servlet-class>LogIn</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteSurvey</servlet-name>
+        <servlet-class>DeleteSurvey</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ChangePassWord</servlet-name>
         <url-pattern>/ChangePassWord</url-pattern>
@@ -25,17 +36,25 @@
         <servlet-name>SuspendSurvey</servlet-name>
         <url-pattern>/SuspendSurvey</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SuspendUser</servlet-name>
+        <url-pattern>/SuspendUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogIn</servlet-name>
+        <url-pattern>/LogIn</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteSurvey</servlet-name>
+        <url-pattern>/DeleteSurvey</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    <display-name>Survey</display-name>
+    <welcome-file-list>
+        <welcome-file>HTML//MainPageForm.html</welcome-file>
+    </welcome-file-list>
 </web-app>
-=======
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
-  <display-name>Survey</display-name>
-  <welcome-file-list>
-    <welcome-file>HTML//MainPageForm.html</welcome-file>
-  </welcome-file-list>
-</web-app>
->>>>>>> ae7fc6c0c055b88296de8ba6b840c42958da4784
