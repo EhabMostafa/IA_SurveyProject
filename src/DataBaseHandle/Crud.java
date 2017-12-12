@@ -88,8 +88,8 @@ WHERE condition;
 		
 	}
 	
-	public ResultSet select(String tableName,Connection conn) {
-
+	public ResultSet select(String tableName) {
+            Connection conn=DBConnection.getActiveConnection();
 	    ResultSet rs = null;
 		String sql="select * from "+tableName+";";
 		try {
@@ -103,8 +103,8 @@ WHERE condition;
 		return rs;
 		
 	}
-	public ResultSet select(String tableName,String colmName,String colmValue, Connection conn) {
-	   
+	public ResultSet select(String tableName,String colmName,String colmValue) {
+	   Connection conn=DBConnection.getActiveConnection();
 	    if (conn== null)
 	    	System.out.println("la'aaaaaaaaaaaaaaaaa");
 	    ResultSet rs = null;
