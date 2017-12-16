@@ -64,10 +64,12 @@ public class ChangePassWord extends HttpServlet {
         HttpSession session = request.getSession(true);
         ArrayList<Pair> values = new  ArrayList<Pair>();
         String OldPass , NewPass ;
-        OldPass = (String) request.getAttribute("OldPassWord");
-        NewPass = (String) request.getAttribute("NewPassWord");
-        values.get(0).setKey("password");
-        values.get(0).setValue(NewPass);
+        OldPass = (String) request.getParameter("OldPassWord");
+        NewPass = (String) request.getParameter("NewPassWord");
+        Pair pair = new Pair();
+        pair.setKey("password");
+        pair.setValue(NewPass);
+        values.add(pair);
         Object name = session.getAttribute("name");
         String Name = name.toString();
         if (type.equals("user")){
