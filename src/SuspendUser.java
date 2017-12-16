@@ -61,8 +61,10 @@ public class SuspendUser extends HttpServlet {
          Crud crud = new Crud();
         ArrayList<Pair> values = new  ArrayList<Pair>();
         String UserName = request.getParameter("UserName");
-         values.get(0).setKey("suspend");
-        values.get(0).setValue("1");
+        Pair pair = new Pair();
+        pair.setKey("suspend");
+        pair.setValue("1");
+         values.add(pair);
         crud.updateRecord ("user" ,  values , "name",UserName );
         processRequest(request, response);
     }

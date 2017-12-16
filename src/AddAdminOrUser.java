@@ -65,16 +65,26 @@ public class AddAdminOrUser extends HttpServlet {
         String PassWord = request.getParameter("password");  
         // Pair p;
          ArrayList<Pair> values = new  ArrayList<Pair>();
-         values.get(0).setKey("UserName");
-         values.get(0).setValue(UserName);
-         values.get(1).setKey("email");
-         values.get(1).setValue(Email);
-         values.get(2).setKey("password");
-         values.get(2).setValue(PassWord); 
+         Pair pair = new Pair();
+         Pair pair1 = new Pair();
+         Pair pair2 = new Pair();
+         pair.setKey("UserName");
+         pair.setValue(UserName);
+         pair1.setKey("email");
+         pair1.setValue(Email);
+         pair2.setKey("password");
+         pair2.setValue(PassWord);
+         values.set(0, pair);
+         
+         values.set(1, pair1);
+         values.set(2, pair2);
+         int size = values.size();
         if(type.equals("user")){
             String gender =request.getParameter("gender"); 
-            values.get(3).setKey("gender");
-            values.get(3).setValue(gender); 
+            pair.setKey("gender");
+            pair.setValue(gender);
+             values.set(3, pair);
+            
             crud.insertRecord ("user" ,values );
            
         }
