@@ -5,10 +5,12 @@
  */
 
 import DataBaseHandle.Crud;
-import DataBaseHandle.Pair;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author norhan
  */
-public class SuspendUser extends HttpServlet {
+public class CheckOnUsername extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,10 +39,10 @@ public class SuspendUser extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet SuspendUser</title>");            
+            out.println("<title>Servlet CheckOnUsername</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet SuspendUser at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet CheckOnUsername at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -58,14 +60,24 @@ public class SuspendUser extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         Crud crud = new Crud();
-        ArrayList<Pair> values = new  ArrayList<Pair>();
-        String UserName = request.getParameter("UserName");
-        Pair pair = new Pair();
-        pair.setKey("suspend");
-        pair.setValue("1");
-         values.add(pair);
-        boolean n = crud.updateRecord ("user" ,  values , "name",UserName );
+        String name = request.getParameter("UserName");
+        String type = request.getParameter("type");
+        Crud crud = new Crud ();
+        PrintWriter out = response.getWriter();
+        ResultSet result = null ;
+        if (type.equalsIgnoreCase("admin")){
+           result = crud.select("admin","UserName",name);
+        }  
+        else if (type.equalsIgnoreCase("user")){
+            result = crud.select("user","UserName",name);
+        }
+        try {
+            if (result.next()){
+              out.print("User name is taken ");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CheckOnUsername.class.getName()).log(Level.SEVERE, null, ex);
+        }
         processRequest(request, response);
     }
 

@@ -61,38 +61,47 @@ public class LogIn extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    String type  = request.getParameter("type");  
+   // String type  = request.getParameter("type");  
     String n=request.getParameter("username");  
-    String p=request.getParameter("userpass");  
+    String p=request.getParameter("password");  
     PrintWriter out = response.getWriter();  
      String pass="";
     Crud crud = new Crud();
     ResultSet result = null ;
-    if(type.equals("user")){
-       result=  crud.select("user","UserName",n);
-       
-    }
-    else if (type.equals("admin")){
-      result=  crud.select("admin","UserName",n);  
-    }
-       
-    try {
-            result.next();
-          pass  = result.getString("password");
+     result=  crud.select("admin","UserName",n);  
+        try {
+            if (result.next()){
+                
+                pass  = result.getString("password");
+                if(pass.equals(p)){  
+                    RequestDispatcher rd=request.getRequestDispatcher("servlet2");  // han7ot el page ely han3ml 3leha redirect
+                     rd.forward(request,response);  
+                 }  
+                else{  
+                    out.print("Sorry username or password error");  
+                }
+            } 
+            else {
+               result=  crud.select("user","UserName",n);  
+               if(result.next()){
+               pass  = result.getString("password");
+                if(pass.equals(p)){  
+                    RequestDispatcher rd=request.getRequestDispatcher("servlet2");  // han7ot el page ely han3ml 3leha redirect
+                     rd.forward(request,response);  
+                 }  
+                else{  
+                    out.print("Sorry username or password error");  
+                }
+            }
+               else {
+                   out.print("Sorry username is incorrect");
+               }
+            }
         } catch (SQLException ex) {
             Logger.getLogger(LogIn.class.getName()).log(Level.SEVERE, null, ex);
         }
-      
     
-    if(pass.equals(p)){  
-        RequestDispatcher rd=request.getRequestDispatcher("servlet2");  // han7ot el page ely han3ml 3leha redirect
-        rd.forward(request,response);  
-    }  
-    else{  
-        out.print("Sorry username or password error");  
-        RequestDispatcher rd=request.getRequestDispatcher("index.html");  // han7ot el page ely han3ml 3leha redirect
-        rd.include(request,response);  
-    }  
+     
           
     
       

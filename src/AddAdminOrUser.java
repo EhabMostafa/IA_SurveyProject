@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -59,8 +60,13 @@ public class AddAdminOrUser extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
         Crud crud = new Crud();
-        String type = request.getParameter("type");
+        PrintWriter out = response.getWriter();
+        HttpSession session = request.getSession(true);
+        
+        String type = (String) session.getAttribute("type");
+        log(type);
         String UserName = request.getParameter("username");
+        log(UserName);
         String Email = request.getParameter("email");
         String PassWord = request.getParameter("password");  
         // Pair p;
@@ -74,23 +80,26 @@ public class AddAdminOrUser extends HttpServlet {
          pair1.setValue(Email);
          pair2.setKey("password");
          pair2.setValue(PassWord);
-         values.set(0, pair);
-         
-         values.set(1, pair1);
-         values.set(2, pair2);
+         values.add( pair);
+         values.add( pair1);
+         values.add( pair2);
          int size = values.size();
         if(type.equals("user")){
             String gender =request.getParameter("gender"); 
             pair.setKey("gender");
             pair.setValue(gender);
-             values.set(3, pair);
+            log(gender);
+             values.add( pair);
             
-            crud.insertRecord ("user" ,values );
+            boolean l =crud.insertRecord ("user" ,values );
+           // log(l+"");
            
         }
+        
         else if (type.equals("admin")){
-           crud.insertRecord ("admin" ,values );
+        boolean t =   crud.insertRecord ("admin" ,values );
         }
+        
         processRequest(request, response);
     }
 
