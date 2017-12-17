@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import Constants.DataBaseConstants;
 import DataBaseHandle.Crud;
 import DataBaseHandle.DBConnection;
+import DataBaseHandle.Pair;
+import Factory.DaosFactory;
 import Models.Survey;
 import Templates.TempSurvey;
 
@@ -63,8 +65,25 @@ Crud crud ;
 	
 	
 	
-	void addNewSurvey(Survey survey)
+	public void addNewSurvey(Survey survey,int id )
 	{
+		ArrayList<Pair> values= new ArrayList<>();
+		values.add(new Pair(DataBaseConstants.SurveynameCOLUM, survey.getName()));
+		values.add(new Pair(DataBaseConstants.SurveydescriptionCOLU, survey.getDescription()));
+		values.add(new Pair(DataBaseConstants.SurveyuserIdCOLUM,id+""));
+		values.add(new Pair(DataBaseConstants.SurveysuspendCOLUM,"false"));
+		// TODO Auto-generated method stub
+		 int surveyId=crud.insertRecord(DataBaseConstants.SurveyTABLENAME, values);
+		DaosFactory daosFactory = new DaosFactory();
+		QuestionDao questionDao = daosFactory.getQuestionDao();
+		
+		
+		
+	// get id 
+		
+		for (int i = 0; i < survey.getQuestions().size(); i++) {
+			questionDao.addQuestion(survey.getQuestions().get(i), surveyId);	
+		} 
 		
 	}
 	

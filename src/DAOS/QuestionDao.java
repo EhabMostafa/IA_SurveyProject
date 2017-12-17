@@ -63,9 +63,7 @@ public class QuestionDao {
 		
 		
 		
-		//get the id 
-		int id =1;
-		crud.insertRecord(DataBaseConstants.QuestionTABLENAME, values);
+		int id=crud.insertRecord(DataBaseConstants.QuestionTABLENAME, values);
 		for (int i=0;i < a.getAnswers().size();i++)
 		{
 			DaosFactory daosFactory = new DaosFactory();

@@ -6,10 +6,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.mysql.jdbc.Statement;
+
 public class Crud {
 	
-	public boolean  insertRecord (String tableName , ArrayList<Pair> values )
+	public int  insertRecord (String tableName , ArrayList<Pair> values )
 	{
+		int n ;
 		String colums= "";
 		for (int i = 0; i < values.size(); i++) {
 			colums+=values.get(i).key;
@@ -25,17 +28,17 @@ public class Crud {
 		String sqlStatment= "insert into  "+tableName+"("+colums+") values ("+ vals+");";
 		Connection con=  DBConnection.getActiveConnection();
 		 try {
-			PreparedStatement st=  con.prepareStatement(sqlStatment);
-			st.executeUpdate(); 
+			PreparedStatement st=  con.prepareStatement(sqlStatment, Statement.RETURN_GENERATED_KEYS);
+			n =st.executeUpdate(); 
 			System.out.println("done");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			DBConnection.closeConnection();
-			return false ;
+			return -1 ;
 		}
 		DBConnection.closeConnection();
-		return true ;
+		return n ;
 	}
 /*
 UPDATE table_name
