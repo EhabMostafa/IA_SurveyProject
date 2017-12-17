@@ -88,8 +88,8 @@ WHERE condition;
 		
 	}
 	
-	public ResultSet select(String tableName,Connection conn) {
-
+	public ResultSet select(String tableName) {
+            Connection conn=DBConnection.getActiveConnection();
 	    ResultSet rs = null;
 		String sql="select * from "+tableName+";";
 		try {
@@ -103,8 +103,24 @@ WHERE condition;
 		return rs;
 		
 	}
-	public ResultSet select(String tableName,String colmName,String colmValue, Connection conn) {
-	   
+	
+	public ResultSet select(String tableName, Connection conn) {
+       
+    ResultSet rs = null;
+	String sql="select * from "+tableName+";";
+	try {
+		PreparedStatement stmt=conn.prepareStatement(sql);
+		 rs=stmt.executeQuery();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	return rs;
+	
+}
+	public ResultSet select(String tableName,String colmName,String colmValue) {
+	   Connection conn=DBConnection.getActiveConnection();
 	    if (conn== null)
 	    	System.out.println("la'aaaaaaaaaaaaaaaaa");
 	    ResultSet rs = null;
@@ -121,6 +137,24 @@ WHERE condition;
 		return rs;
 		
 	}
+	public ResultSet select(String tableName,String colmName,String colmValue, Connection conn) {
+		 
+		    if (conn== null)
+		    	System.out.println("la'aaaaaaaaaaaaaaaaa");
+		    ResultSet rs = null;
+			String sql="select * from "+tableName+" where "+colmName+" = \'"+colmValue+"\' ;";
+			System.out.println(sql);
+			try {
+				PreparedStatement stmt=conn.prepareStatement(sql);
+				 rs=stmt.executeQuery();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			return rs;
+			
+		}
 	
 	public static void main(String[] args) {
 		Crud crud= new Crud();

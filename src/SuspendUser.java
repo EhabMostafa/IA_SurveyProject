@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author norhan
  */
-public class SuspendSurvey extends HttpServlet {
+public class SuspendUser extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,10 +37,10 @@ public class SuspendSurvey extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet SuspendSurvey</title>");            
+            out.println("<title>Servlet SuspendUser</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet SuspendSurvey at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet SuspendUser at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -58,15 +58,14 @@ public class SuspendSurvey extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Crud crud = new Crud();
+         Crud crud = new Crud();
         ArrayList<Pair> values = new  ArrayList<Pair>();
-        String SurveyName = request.getParameter("SurveyName");
-        
+        String UserName = request.getParameter("UserName");
         Pair pair = new Pair();
         pair.setKey("suspend");
         pair.setValue("1");
          values.add(pair);
-        crud.updateRecord ("survey" ,  values , "name",SurveyName );
+        crud.updateRecord ("user" ,  values , "name",UserName );
         processRequest(request, response);
     }
 
