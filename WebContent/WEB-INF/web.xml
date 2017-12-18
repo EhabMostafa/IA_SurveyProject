@@ -1,17 +1,7 @@
-<<<<<<< HEAD
-
+<?xml version="1.0" encoding="UTF-8"?>
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
-=======
-<?xml version="1.0" encoding="UTF-8"?>
-
-<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-    <welcome-file-list>
-        <welcome-file>JSP/HomePage.jsp</welcome-file>
-        <welcome-file>JSP/OwnSurveyPage.jsp</welcome-file>
-       <welcome-file>HTML/AddSurvey.html</welcome-file>
->>>>>>> 5501573c540bb9ce15aaefea4576de11df9b8ae3
     </welcome-file-list>
     <servlet>
         <servlet-name>ChangePassWord</servlet-name>
@@ -37,17 +27,10 @@
         <servlet-name>DeleteSurvey</servlet-name>
         <servlet-class>DeleteSurvey</servlet-class>
     </servlet>
-<<<<<<< HEAD
     <servlet>
-        <servlet-name>CheckOnUsername</servlet-name>
-        <servlet-class>CheckOnUsername</servlet-class>
+        <servlet-name>RetriveUSers</servlet-name>
+        <servlet-class>RetriveUSers</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>CheckOnEmail</servlet-name>
-        <servlet-class>CheckOnEmail</servlet-class>
-    </servlet>
-=======
->>>>>>> 5501573c540bb9ce15aaefea4576de11df9b8ae3
     <servlet-mapping>
         <servlet-name>ChangePassWord</servlet-name>
         <url-pattern>/ChangePassWord</url-pattern>
@@ -72,17 +55,10 @@
         <servlet-name>DeleteSurvey</servlet-name>
         <url-pattern>/DeleteSurvey</url-pattern>
     </servlet-mapping>
-<<<<<<< HEAD
     <servlet-mapping>
-        <servlet-name>CheckOnUsername</servlet-name>
-        <url-pattern>/CheckOnUsername</url-pattern>
+        <servlet-name>RetriveUSers</servlet-name>
+        <url-pattern>/RetriveUSers</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>CheckOnEmail</servlet-name>
-        <url-pattern>/CheckOnEmail</url-pattern>
-    </servlet-mapping>
-=======
->>>>>>> 5501573c540bb9ce15aaefea4576de11df9b8ae3
     <session-config>
         <session-timeout>
             30

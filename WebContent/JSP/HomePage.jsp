@@ -71,6 +71,9 @@
 					<li class="fh5co-active"><a href="">Home</a></li>
                                         <li ><a href="getSurviesByuserId">Own Surveys</a></li>
                                         <li ><a href="HTML/AddSurvey.html">New Survey</a></li>
+                                        <li ><a href="ChangePAss">Change Password</a></li>
+                                        <li ><a href="AddAdmin">Add Admin</a></li>
+
                                         <li ><a href="">Send E-mail</a></li>
                                         <li ><a href="">Open List</a></li>
                                         <li ><a href="">Reports</a></li>

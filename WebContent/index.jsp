@@ -8,7 +8,7 @@
   <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Open+Sans:600'>
 
       <link rel="stylesheet" href="style.css">
-
+   <script src='https://www.google.com/recaptcha/api.js'></script>
   
 </head>
 <!-- background:url(https://raw.githubusercontent.com/khadkamhn/day-01-login-form/master/img/bg.jpg) no-repeat center;
@@ -17,12 +17,13 @@
   <div class="login-wrap">
       
 	<div class="login-html">
+            
 		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
 		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
 		<div class="login-form">
 			<div class="sign-in-htm">
 			<br><br><br><br>
-			<form id='login' action='LogIn' method='get' accept-charset='UTF-8'>
+			<form id='login' action='LogIn' method='post' accept-charset='UTF-8'>
 				<div class="group">
 					<label for="username" class="label">Username</label>
 					<input id="username" name ='username' type="text" class="input">
@@ -42,7 +43,7 @@
 			</div>
 			<div class="sign-up-htm">
 
-			<form id='signup' action='AddAdminOrUser' method='get' >
+			<form id='signup' action='AddAdminOrUser' method='post' >
                             <% HttpSession Session = request.getSession(true) ;
                             Session.setAttribute("type","user");
                             %>
@@ -65,16 +66,15 @@
 					<label>Male</label>   <input id='gender'  name='gender' type='radio'  class='input' value='male'>
                                         
 				</div>
-
+                        
+                                <div class="g-recaptcha" data-sitekey="6LfBez0UAAAAABp0PmqYF_bcW-Dk5c-1MO8NfYH7"></div>
 
 				<div class="group">
 					<input type="submit" class="button" value="Sign Up">
 					</form>
 				</div>
 				<div class="hr"></div>
-				<div class="foot-lnk">
-					<label for="tab-1">Already Member?</a>
-				</div>
+				
 			</div>
 		</div>
 	</div>

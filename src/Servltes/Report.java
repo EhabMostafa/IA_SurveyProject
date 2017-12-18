@@ -8,13 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-<<<<<<< HEAD
 
-import  com.google.gson.Gson;
 
-=======
-import com.google.gson.Gson;
->>>>>>> 5501573c540bb9ce15aaefea4576de11df9b8ae3
+//import com.google.gson.Gson;
+
 import DAOS.ReportDao;
 import Factory.DaosFactory;
 import Factory.ModelFactory;
@@ -28,7 +25,7 @@ public class Report extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private DaosFactory daosFactory;
 	private ModelFactory modelFactory;
-	final Gson gson = new Gson();
+//	final Gson gson = new Gson();
 	Map result= new HashMap<>();
 	
        
@@ -64,13 +61,13 @@ public class Report extends HttpServlet {
 		result.put("result", "true");
 		result.put("report", report);
 		
-		String resultInJsonFormat=gson.toJson(result);
-		try {
-			response.getWriter().append(resultInJsonFormat);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		String resultInJsonFormat=gson.toJson(result);
+//		try {
+//			response.getWriter().append(resultInJsonFormat);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 
 	}
 
@@ -110,13 +107,13 @@ public class Report extends HttpServlet {
 		reportDao.addReport(report,surveyId,userId);
 		
 		result.put("result", "true");
-		String resultInJsonFormat=gson.toJson(result);
-		try {
-			response.getWriter().append(resultInJsonFormat);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		String resultInJsonFormat=gson.toJson(result);
+//		try {
+//			response.getWriter().append(resultInJsonFormat);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
 		
 		
