@@ -10,6 +10,7 @@ import DataBaseHandle.Crud;
 import DataBaseHandle.DBConnection;
 import DataBaseHandle.Pair;
 import Factory.DaosFactory;
+import Models.Answer;
 import Models.Question;
 import Models.Report;
 
@@ -72,6 +73,40 @@ public class QuestionDao {
 		}
 		
 		
+	}
+	
+	
+	public ArrayList<Question> getQuestionsBySurveyId(int surveyId)
+	{
+		ArrayList<Question>  questions = new ArrayList<>();
+		
+		
+		Connection conn= DBConnection.getActiveConnection();
+		ResultSet res= crud.select(DataBaseConstants.QuestionTABLENAME ,DataBaseConstants.QuestionsurveyIdCOLUM ,surveyId+"", conn);
+		
+		try {
+			while  (res.next())
+			{
+				Question  q =new Question
+						(res.getInt(DataBaseConstants.QuestionIdCOLU),
+						res.getString(DataBaseConstants.QuestionTypeCOLUM),res.getString(DataBaseConstants.QuestionQuestionCOLUM));
+				
+				DaosFactory daosFactory = new DaosFactory();
+				
+				AnswerDao answerDao = daosFactory.getAnswerDao();
+				q.setAnswers(answerDao.getAnswersByQuestionId(q.getId()));
+				
+				
+				questions.add(q);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		DBConnection.closeConnection();
+		
+		return questions ;
 	}
 	
 	

@@ -91,13 +91,13 @@ public class AddAdminOrUser extends HttpServlet {
             log(gender);
              values.add( pair);
             
-            boolean l =crud.insertRecord ("user" ,values );
+            crud.insertRecord ("user" ,values );
            // log(l+"");
            
         }
         
         else if (type.equals("admin")){
-        boolean t =   crud.insertRecord ("admin" ,values );
+          crud.insertRecord ("admin" ,values );
         }
         
         processRequest(request, response);

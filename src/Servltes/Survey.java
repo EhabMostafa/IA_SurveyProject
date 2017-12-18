@@ -23,7 +23,7 @@ import javax.servlet.RequestDispatcher;
 /**
  * Servlet implementation class Survey
  */
-@WebServlet({ "/Survey", "/getAllSurvies", "/getSurviesByuserId" })
+@WebServlet({ "/Survey", "/getAllSurvies", "/getSurviesByuserId","/addSurvey" })
 public class Survey extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private DaosFactory daosFactory;
@@ -57,9 +57,42 @@ public class Survey extends HttpServlet {
                  getSurviesByuserId(request,response);   
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/JSP/OwnSurveyPage.jsp");
             rd.forward(request, response);
-            
+		}
+			
+		if (url.equalsIgnoreCase("/addSurvey"))
+		{
+			addSurvey(request,response);
+			
 			
 		}
+		if (url.equalsIgnoreCase("/getSurveyById"))
+		{
+			getSurveyById(request,response);
+			
+			
+		}
+	}
+
+	private void getSurveyById(HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		int id   = Integer.parseInt( request.getParameter("surveyId"));
+		SurveyDao surveyDao= daosFactory.getSurveyDao();
+		Models. Survey survey= surveyDao.getSurveyById( id);
+		
+		
+	}
+
+	private void addSurvey(HttpServletRequest request,  HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		Models.Survey survey = new Models.Survey();
+		String surveyString  = request.getParameter("Survey");
+		int id   = Integer.parseInt( request.getParameter("userId"));
+		
+		
+		//setup the survey ;
+		SurveyDao surveyDao= daosFactory.getSurveyDao();
+		surveyDao.addNewSurvey(survey, id);
+		
 	}
 
 	private HttpServletRequest getSurviesByuserId(HttpServletRequest request, HttpServletResponse response) throws IOException {

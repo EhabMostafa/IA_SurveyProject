@@ -1,13 +1,31 @@
 package DataBaseHandle;
 
+import java.net.Authenticator;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Properties;
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 import com.mysql.jdbc.Statement;
 
+//Crud crud= new Crud();
+//ArrayList<Pair> values= new ArrayList<>();
+//values.add(new Pair("UserName", "emam11222"));
+//values.add(new Pair("email", "emammahmoud@gmail.com"));
+//values.add(new Pair("password", "1234567890"));
+//System.out.println(crud.insertRecord("Admin", values));
+//System.out.println("ujyhtgrfedsz");
 public class Crud {
 	
 	public int  insertRecord (String tableName , ArrayList<Pair> values )
@@ -30,6 +48,10 @@ public class Crud {
 		 try {
 			PreparedStatement st=  con.prepareStatement(sqlStatment, Statement.RETURN_GENERATED_KEYS);
 			n =st.executeUpdate(); 
+			ResultSet rs = st.getGeneratedKeys();
+			if (rs.next()){
+			    n=rs.getInt(1);
+			}
 			System.out.println("done");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -160,15 +182,12 @@ WHERE condition;
 		}
 	
 	public static void main(String[] args) {
-		Crud crud= new Crud();
-		ArrayList<Pair> values= new ArrayList<>();
-		values.add(new Pair("UserName", "emam"));
-		values.add(new Pair("email", "emammahmoud@gmail.com"));
-		values.add(new Pair("password", "1234567890"));
-		crud.insertRecord("Admin", values);
-		System.out.println("ujyhtgrfedsz");
-		
+
 		
 	}
+
+		
+		
+	
 
 }

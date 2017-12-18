@@ -10,7 +10,7 @@ public class DBConnection {
 	private final static String  serveIp="localhost:3306";
 	private final static String  DBname="survey";
 	private final static String  userName="root";
-	private final static String  password="";
+	private final static String  password="root";
 	
 	public static Connection getActiveConnection() {
 		try {
