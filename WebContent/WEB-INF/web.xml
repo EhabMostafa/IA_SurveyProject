@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
     <welcome-file-list>
-        <welcome-file>JSP/HomePage.jsp</welcome-file>
-        <welcome-file>JSP/OwnSurveyPage.jsp</welcome-file>
-        <welcome-file>HTML/AddSurvey.html</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
     <servlet>
         <servlet-name>ChangePassWord</servlet-name>
@@ -30,8 +28,8 @@
         <servlet-class>DeleteSurvey</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Redirect</servlet-name>
-        <servlet-class>Servltes.Redirect</servlet-class>
+        <servlet-name>RetriveUSers</servlet-name>
+        <servlet-class>RetriveUSers</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ChangePassWord</servlet-name>
@@ -58,8 +56,8 @@
         <url-pattern>/DeleteSurvey</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Redirect</servlet-name>
-        <url-pattern>/Redirect</url-pattern>
+        <servlet-name>RetriveUSers</servlet-name>
+        <url-pattern>/RetriveUSers</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

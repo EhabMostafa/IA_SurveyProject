@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
+//import com.google.gson.Gson;
 
 import DAOS.SurveyDao;
 import Factory.DaosFactory;
@@ -27,7 +27,7 @@ import javax.servlet.RequestDispatcher;
 public class Survey extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private DaosFactory daosFactory;
-	final Gson gson = new Gson();
+//	final Gson gson = new Gson();
 	Map result= new HashMap<>();
        
     /**
