@@ -70,7 +70,7 @@
                                         <li ><a>[UserName]</a></li>
 					<li ><a href="/WEB-INF">Home</a></li>
                                         <li class="fh5co-active"><a href="">Own Surveys</a></li>
-                                        <li ><a href="">New Survey</a></li>
+                                        <li ><a href="AddSurveyForm">New Survey</a></li>
                                         <li ><a href="">Send E-mail</a></li>
                                         <li ><a href="">Open List</a></li>
                                         <li ><a href="">Reports</a></li>

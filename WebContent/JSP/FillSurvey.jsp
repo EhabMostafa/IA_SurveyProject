@@ -1,11 +1,13 @@
 
 
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html class="no-js"> <!--<![endif]-->
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Survey Me - AddSurvey</title>
+	<title>Survey Me - Own Pages</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 
@@ -64,12 +66,13 @@
 			<nav id="fh5co-main-menu" role="navigation">
 				<ul>
                                         <li ><a>[UserName]</a></li>
-					<li ><a href="">Home</a></li>
-                                        <li ><a href="getSurviesByuserId">Own Surveys</a></li>
-                                        <li class="fh5co-active"><a href="HTML/AddSurvey.html">New Survey</a></li>
+					<li class="fh5co-active"><a href="/WEB-INF">Home</a></li>
+                                        <li ><a href="">Own Surveys</a></li>
+                                        <li ><a href="AddSurveyForm">New Survey</a></li>
                                         <li ><a href="">Send E-mail</a></li>
                                         <li ><a href="">Open List</a></li>
                                         <li ><a href="">Reports</a></li>
+                                        
                                         <li ><a href="">Logout</a></li>
 				</ul>
 			</nav>
@@ -77,11 +80,12 @@
 
 		<div id="fh5co-main">
                    
-                      
+                          
+                                   
 			<div class="fh5co-narrow-content">
-				<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">Add New Survey</h2>
-				<div class="row animate-box" data-animate-effect="fadeInLeft" id="AllSurvies">
-					
+				<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">Fill Survey</h2>
+				<div class="row animate-box" data-animate-effect="fadeInLeft" >
+                                        
 				</div>
 			
                                 </div>

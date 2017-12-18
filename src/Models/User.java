@@ -11,8 +11,6 @@ public class User {
 	private boolean suspend ;
 	
 	
-	
-	
 	public User(String userName, int id, String email, String password, String gender, boolean suspend) {
 		super();
 		this.userName = userName;

@@ -90,8 +90,7 @@ Crud crud ;
 		} 
 		
 	}
-	
-	
+
 	public Survey getSurveyById(int surveyId)
 	{
 		Survey survey = new Survey();
@@ -126,12 +125,6 @@ Crud crud ;
 		
 		return survey ;
 	}
-	
-	
-	
-	
-	
-		
 
 
 }

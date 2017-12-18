@@ -9,6 +9,7 @@ import DataBaseHandle.Pair;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -59,46 +60,7 @@ public class AddAdminOrUser extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
-        Crud crud = new Crud();
-        PrintWriter out = response.getWriter();
-        HttpSession session = request.getSession(true);
-        
-        String type = (String) session.getAttribute("type");
-        log(type);
-        String UserName = request.getParameter("username");
-        log(UserName);
-        String Email = request.getParameter("email");
-        String PassWord = request.getParameter("password");  
-        // Pair p;
-         ArrayList<Pair> values = new  ArrayList<Pair>();
-         Pair pair = new Pair();
-         Pair pair1 = new Pair();
-         Pair pair2 = new Pair();
-         pair.setKey("UserName");
-         pair.setValue(UserName);
-         pair1.setKey("email");
-         pair1.setValue(Email);
-         pair2.setKey("password");
-         pair2.setValue(PassWord);
-         values.add( pair);
-         values.add( pair1);
-         values.add( pair2);
-         int size = values.size();
-        if(type.equals("user")){
-            String gender =request.getParameter("gender"); 
-            pair.setKey("gender");
-            pair.setValue(gender);
-            log(gender);
-             values.add( pair);
-            
-            crud.insertRecord ("user" ,values );
-           // log(l+"");
-           
-        }
-        
-        else if (type.equals("admin")){
-          crud.insertRecord ("admin" ,values );
-        }
+       
         
         processRequest(request, response);
     }
@@ -114,6 +76,55 @@ public class AddAdminOrUser extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+         Crud crud = new Crud();
+        PrintWriter out = response.getWriter();
+        HttpSession session = request.getSession(true);
+        
+        String type = (String) session.getAttribute("type");
+        log(type);
+        String UserName = request.getParameter("username");
+        log(UserName);
+        String Email = request.getParameter("email");
+        String PassWord = request.getParameter("password");  
+        // Pair p;
+         ArrayList<Pair> values = new  ArrayList<Pair>();
+         Pair pair = new Pair();
+         Pair pair1 = new Pair();
+         Pair pair2 = new Pair();
+         Pair pair3 = new Pair();
+         Pair pair4 = new Pair();
+         pair.setKey("UserName");
+         pair.setValue(UserName);
+         pair1.setKey("email");
+         pair1.setValue(Email);
+         pair2.setKey("password");
+         pair2.setValue(PassWord);
+         values.add( pair);
+         values.add( pair1);
+         values.add( pair2);
+         int size = values.size();
+        if(type.equals("user")){
+            String gender =request.getParameter("gender"); 
+            pair3.setKey("gender");
+            pair3.setValue(gender);
+            pair4.setKey("suspend");
+            pair4.setValue("0");
+            log(gender);
+            values.add( pair3);
+            values.add(pair4);
+            
+           int id = crud.insertRecord ("user" ,values );
+           // log(l+"");
+             session.setAttribute("UserID", id);
+             RequestDispatcher rd=request.getRequestDispatcher("JSP/HomePage.jsp");
+             rd.forward(request,response);  
+           
+        }
+        
+        else if (type.equals("admin")){
+        crud.insertRecord ("admin" ,values );
+       
+        }
         processRequest(request, response);
     }
 

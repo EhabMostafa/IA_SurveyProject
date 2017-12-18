@@ -30,7 +30,8 @@ public class Crud {
 	
 	public int  insertRecord (String tableName , ArrayList<Pair> values )
 	{
-		int n ;
+            
+		int n = 0 ;
 		String colums= "";
 		for (int i = 0; i < values.size(); i++) {
 			colums+=values.get(i).key;
@@ -46,12 +47,14 @@ public class Crud {
 		String sqlStatment= "insert into  "+tableName+"("+colums+") values ("+ vals+");";
 		Connection con=  DBConnection.getActiveConnection();
 		 try {
+                     System.out.println("hello  "+  sqlStatment);
 			PreparedStatement st=  con.prepareStatement(sqlStatment, Statement.RETURN_GENERATED_KEYS);
 			n =st.executeUpdate(); 
 			ResultSet rs = st.getGeneratedKeys();
 			if (rs.next()){
 			    n=rs.getInt(1);
 			}
+
 			System.out.println("done");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

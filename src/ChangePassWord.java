@@ -59,26 +59,8 @@ public class ChangePassWord extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String type = request.getParameter("type");
-        Crud crud = new Crud();
-        HttpSession session = request.getSession(true);
-        ArrayList<Pair> values = new  ArrayList<Pair>();
-        String OldPass , NewPass ;
-        OldPass = (String) request.getParameter("OldPassWord");
-        NewPass = (String) request.getParameter("NewPassWord");
-        Pair pair = new Pair();
-        pair.setKey("password");
-        pair.setValue(NewPass);
-        values.add(pair);
-        Object name = session.getAttribute("name");
-        String Name = name.toString();
-        if (type.equals("user")){
-            crud.updateRecord ("user" ,  values , "UserName",Name );
-        }
-        else if (type.equals("admin")){
-         crud.updateRecord ("admin" ,  values , "UserName",Name );
-   
-        }
+        
+        
         
         processRequest(request, response);
     }
@@ -94,6 +76,32 @@ public class ChangePassWord extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //String type = request.getParameter("type");
+        Crud crud = new Crud();
+        HttpSession session = request.getSession(true);
+        ArrayList<Pair> values = new  ArrayList<Pair>();
+        String OldPass , NewPass ;
+        OldPass = (String) request.getParameter("OldPassWord");
+        NewPass = (String) request.getParameter("NewPassWord");
+        System.out.println(OldPass);
+        System.out.println(NewPass);
+        Pair pair = new Pair();
+        pair.setKey("password");
+        pair.setValue(NewPass);
+        values.add(pair);
+        Object id = session.getAttribute("UserID");
+        if (id == null){
+          System.out.println("id ");  
+        }
+        
+        String ID = id.toString();
+       // if (type.equals("user")){
+            crud.updateRecord ("user" ,  values , "id",ID);
+       // }
+//        else if (type.equals("admin")){
+//         crud.updateRecord ("admin" ,  values , "UserName",Name );
+//   
+//        }
         processRequest(request, response);
     }
 
