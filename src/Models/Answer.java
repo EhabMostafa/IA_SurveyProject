@@ -16,6 +16,10 @@ public class Answer {
 		this.id = id;
 		this.answer = answer;
 	}
+        public Answer( String answer) {
+		super();
+		this.answer = answer;
+	}
 	public int getId() {
 		return id;
 	}

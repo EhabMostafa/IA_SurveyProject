@@ -23,6 +23,13 @@ public class Question {
 		this.question = question;
 		this.answers = answers;
 	}
+        public Question(int id, String type, String question) {
+		super();
+		this.id = id;
+		this.type = type;
+		this.question = question;
+		
+	}
 	public int getId() {
 		return id;
 	}

@@ -89,7 +89,40 @@ Crud crud ;
 		
 	}
 	
-	
+	public Survey getSurveyById(int surveyId)
+	{
+		Survey survey = new Survey();
+		
+		
+		Connection conn= DBConnection.getActiveConnection();
+		ResultSet res= crud.select(DataBaseConstants.SurveyTABLENAME ,DataBaseConstants.SurveyIdCOLU ,surveyId+"", conn);
+		
+		try {
+			if  (res.next())
+			{
+				if  (res.next())
+				{
+					
+							survey.setDescription( res.getString(DataBaseConstants.SurveydescriptionCOLU));
+							survey.setName( res.getString(DataBaseConstants.SurveynameCOLUM));
+							survey.setId(surveyId);
+					DaosFactory daosFactory = new DaosFactory();
+					
+					QuestionDao q = daosFactory .getQuestionDao();
+					survey.setQuestions(q.getQuestionsBySurveyId(surveyId));
+				
+			
+			}
+		}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		DBConnection.closeConnection();
+		
+		return survey ;
+	}
 	
 	
 		
