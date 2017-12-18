@@ -42,7 +42,7 @@ public class AnswerDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		DBConnection.closeConnection();
 		
 		return answers;
 	}
