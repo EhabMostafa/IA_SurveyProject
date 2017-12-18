@@ -8,9 +8,9 @@ import java.sql.SQLException;
 public class DBConnection {
 	private static Connection connection = null;
 	private final static String  serveIp="localhost:3306";
-	private final static String  DBname="Survey";
+	private final static String  DBname="survey";
 	private final static String  userName="root";
-	private final static String  password="root";
+	private final static String  password="";
 	
 	public static Connection getActiveConnection() {
 		try {

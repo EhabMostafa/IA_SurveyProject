@@ -11,30 +11,30 @@ import DAOS.UserDao;
 public class DaosFactory {
 
 	
-	UserDao getUserDao(){
+	public UserDao getUserDao(){
 		return new UserDao();
 	}
-	AdminDao getAdminDao()
+	public AdminDao getAdminDao()
 	{
 		return new AdminDao();
 	}
-	AnswerDao getAnswerDao()
+	public AnswerDao getAnswerDao()
 	{
 		return new AnswerDao();
 	}
-	QuestionDao getQuestionDao ()
+	public QuestionDao getQuestionDao ()
 	{
 		return new QuestionDao();
 	}
-	ReportDao getReportDao ()
+	public ReportDao getReportDao ()
 	{
 		return new ReportDao();
 	}
-	SurveyDao getSurveyDao()
+	public SurveyDao getSurveyDao()
 	{
 		return new SurveyDao();
 	}
-	UserAnswerDao getUserAnswerDa() 
+	public UserAnswerDao getUserAnswerDa() 
 	{
 		return new UserAnswerDao();
 	}

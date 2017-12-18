@@ -9,7 +9,7 @@
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Survey Me - Home</title>
+	<title>Survey Me - Own Pages</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 
@@ -64,13 +64,13 @@
 		<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
 		<aside id="fh5co-aside" role="complementary" class="border js-fullheight">
 
-			<h1 id="fh5co-logo"><a href=""><img src="Resources/logo.png" alt="Free HTML5 Bootstrap Website Template"></a></h1>
+			<h1 id="fh5co-logo"><a href=""><img src="Resources/logo.png"></a></h1>
 			<nav id="fh5co-main-menu" role="navigation">
 				<ul>
                                         <li ><a>[UserName]</a></li>
-					<li class="fh5co-active"><a href="">Home</a></li>
-                                        <li ><a href="getSurviesByuserId">Own Surveys</a></li>
-                                        <li ><a href="HTML/AddSurvey.html">New Survey</a></li>
+					<li ><a href="/WEB-INF">Home</a></li>
+                                        <li class="fh5co-active"><a href="">Own Surveys</a></li>
+                                        <li ><a href="">New Survey</a></li>
                                         <li ><a href="">Send E-mail</a></li>
                                         <li ><a href="">Open List</a></li>
                                         <li ><a href="">Reports</a></li>
@@ -82,19 +82,29 @@
 
 		<div id="fh5co-main">
                    
-                    
-                    <script>               
-                 $(document).ready(function(){
-        $.ajax({url: "/WEB-INF/getAllSurvies", success: function(result){
-            $("#AllSurvies").html(result);
-        }});
-});                
-                    </script>        
+                          
                                    
 			<div class="fh5co-narrow-content">
-				<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">All Surveys</h2>
-				<div class="row animate-box" data-animate-effect="fadeInLeft" id="AllSurvies">
-					
+				<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">OWN Surveys</h2>
+				<div class="row animate-box" data-animate-effect="fadeInLeft" >
+                                    <% 
+                                    ArrayList<TempSurvey> surveys=(ArrayList<TempSurvey>) request.getAttribute("own");
+                                    for (int i=0;i<surveys.size();i++){
+                     String html="<div class='col-md-4 col-sm-6 col-xs-6 col-xxs-12 work-item'>"+
+                                 "<a href=''>"+
+                                 "<img src='Resources/work_1.jpg' class='img-responsive'>"+
+                                 "<h3 class='fh5co-work-title'>"+
+                                 surveys.get(i).getName()+
+                                 "</h3>"+
+                                 "<p>"+surveys.get(i).getDescription()+"</p>"+
+			         "</a>"+
+                                 "</div>";
+                                 out.print(html);
+                                  }
+                                    
+                                    
+                                    
+                                    %>
 				</div>
 			
                                 </div>
