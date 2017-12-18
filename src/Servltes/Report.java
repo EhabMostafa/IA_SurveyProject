@@ -3,15 +3,18 @@ package Servltes;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+<<<<<<< HEAD
 
 import  com.google.gson.Gson;
 
+=======
+import com.google.gson.Gson;
+>>>>>>> 5501573c540bb9ce15aaefea4576de11df9b8ae3
 import DAOS.ReportDao;
 import Factory.DaosFactory;
 import Factory.ModelFactory;

@@ -4,13 +4,23 @@ public class TempSurvey {
 
 	private  int id ;
 	private String Name;
+        private String Description;
 	
 	
-	public TempSurvey(int id, String name) {
+	public TempSurvey(int id, String name,String description) {
 		super();
 		this.id = id;
 		Name = name;
+                Description=description;
 	}
+
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setDescription(String Description) {
+        this.Description = Description;
+    }
 	
 	
 	public TempSurvey() {

@@ -17,6 +17,8 @@ import DAOS.SurveyDao;
 import Factory.DaosFactory;
 import Factory.ModelFactory;
 import Templates.TempSurvey;
+import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 
 /**
  * Servlet implementation class Survey
@@ -46,50 +48,62 @@ public class Survey extends HttpServlet {
 		String url= request.getRequestURI().substring(request.getContextPath().length());
 		if (url.equalsIgnoreCase("/getAllSurvies"))
 		{
-			getAllSurvies(response);
+			response=getAllSurvies(response);
+                        
+                      
 		}
 		if (url.equalsIgnoreCase("/getSurviesByuserId"))
 		{
-			getSurviesByuserId(request,response);
+                 getSurviesByuserId(request,response);   
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/JSP/OwnSurveyPage.jsp");
+            rd.forward(request, response);
+            
 			
 		}
 	}
 
-	private void getSurviesByuserId(HttpServletRequest request, HttpServletResponse response) {
+	private HttpServletRequest getSurviesByuserId(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// TODO Auto-generated method stub
-		int  userId=Integer.parseInt( request.getParameter("userId"));
+		//int  userId=Integer.parseInt( request.getParameter("userId"));
 		SurveyDao surveyDao= daosFactory.getSurveyDao();
-		ArrayList<TempSurvey> surveys= surveyDao.getSurviesByuserId(userId);
-		result.put("result", "true");
-		result.put("report", surveys);
+		ArrayList<TempSurvey> surveys= surveyDao.getSurviesByuserId(1);
+		request.setAttribute("own", surveys);
+                //result.put("result", "true");
+		//result.put("report", surveys);
 		
-		String resultInJsonFormat=gson.toJson(result);
-		try {
-			response.getWriter().append(resultInJsonFormat);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		//String resultInJsonFormat=gson.toJson(result);
+		               
+                 
 		
+                
+		return request;
 		
 		
 	}
 
-	private void getAllSurvies(HttpServletResponse response) {
+	private HttpServletResponse getAllSurvies(HttpServletResponse response) throws IOException {
 		// TODO Auto-generated method stub
 		SurveyDao surveyDao= daosFactory.getSurveyDao();
 		ArrayList<TempSurvey> surveys= surveyDao.getAllSurvies();
-		result.put("result", "true");
-		result.put("report", surveys);
+		//result.put("result", "true");
+		//result.put("report", surveys);
+		//String resultInJsonFormat=gson.toJson(result);
+                PrintWriter out = response.getWriter();
+                 for (int i=0;i<surveys.size();i++){
+                     String html="<div class='col-md-4 col-sm-6 col-xs-6 col-xxs-12 work-item'>"+
+                                 "<a href=''>"+
+                                 "<img src='Resources/work_1.jpg' class='img-responsive'>"+
+                                 "<h3 class='fh5co-work-title'>"+
+                                 surveys.get(i).getName()+
+                                 "</h3>"+
+                                 "<p>"+surveys.get(i).getDescription()+"</p>"+
+			         "</a>"+
+                                 "</div>";
+                                 out.print(html);
+                                  }
 		
-		String resultInJsonFormat=gson.toJson(result);
-		try {
-			response.getWriter().append(resultInJsonFormat);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+                
+		return response;
 	}
 
 	/**

@@ -25,13 +25,14 @@ Crud crud ;
 	public ArrayList<TempSurvey>  getAllSurvies() {
 		
 		Connection conn= DBConnection.getActiveConnection();
-		ResultSet res= crud.select(DataBaseConstants.SurveyTABLENAME, conn);
+		ResultSet res= crud.select(DataBaseConstants.SurveyTABLENAME,DataBaseConstants.SurveysuspendCOLUM,Integer.toString(0));
 		ArrayList<TempSurvey> surveys= new ArrayList<>(); 
 		try {
 			while  (res.next())
 			{
 				TempSurvey s =new TempSurvey (res.getInt(DataBaseConstants.SurveyIdCOLU),
-						res.getString(DataBaseConstants.SurveynameCOLUM));
+						res.getString(DataBaseConstants.SurveynameCOLUM),
+                                res.getString(DataBaseConstants.SurveydescriptionCOLU));
 				surveys.add(s);
 			}
 			
@@ -51,7 +52,8 @@ Crud crud ;
 			while  (res.next())
 			{
 				TempSurvey s =new TempSurvey (res.getInt(DataBaseConstants.SurveyIdCOLU),
-						res.getString(DataBaseConstants.SurveynameCOLUM));
+						res.getString(DataBaseConstants.SurveynameCOLUM),
+                                res.getString(DataBaseConstants.SurveydescriptionCOLU));
 				surveys.add(s);
 			}
 			
