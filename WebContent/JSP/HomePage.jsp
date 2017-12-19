@@ -67,19 +67,18 @@
 			<h1 id="fh5co-logo"><a href=""><img src="Resources/logo.png" alt="Free HTML5 Bootstrap Website Template"></a></h1>
 			<nav id="fh5co-main-menu" role="navigation">
 				<ul>
-                                        <li ><a>[UserName]</a></li>
+                                    <% HttpSession Session = request.getSession(true) ;
+                                       String UserName=(String) Session.getAttribute("UN");
+                                       out.print("<li ><a>["+UserName+"]</a></li>");
+                            %>
 					<li class="fh5co-active"><a href="">Home</a></li>
                                         <li ><a href="getSurviesByuserId">Own Surveys</a></li>
-
-                                        <li ><a href="AddSurveyForm">New Survey</a></li>
                                         <li ><a href="ChangePAss">Change Password</a></li>
                                         <li ><a href="AddAdmin">Add Admin</a></li>
-
-
+                                        <li ><a href="AddSurveyForm">New Survey</a></li
                                         <li ><a href="">Send E-mail</a></li>
                                         <li ><a href="">Open List</a></li>
                                         <li ><a href="">Reports</a></li>
-                                        
                                         <li ><a href="">Logout</a></li>
 				</ul>
 			</nav>

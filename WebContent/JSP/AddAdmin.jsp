@@ -14,7 +14,7 @@
   
   <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Open+Sans:600'>
 
-      <link rel="stylesheet" href="style.css">
+      <link rel="stylesheet" href="style2.css">
    
     </head>
     <body>

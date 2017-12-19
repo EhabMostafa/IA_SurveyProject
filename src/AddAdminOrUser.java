@@ -8,7 +8,11 @@ import DataBaseHandle.Crud;
 import DataBaseHandle.Pair;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -35,16 +39,7 @@ public class AddAdminOrUser extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AddAdminOrUser</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AddAdminOrUser at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+           
         }
     }
 
@@ -82,11 +77,12 @@ public class AddAdminOrUser extends HttpServlet {
         
         String type = (String) session.getAttribute("type");
         log(type);
-        String UserName = request.getParameter("username");
+        String UserName = request.getParameter("usernameR");
         log(UserName);
         String Email = request.getParameter("email");
         String PassWord = request.getParameter("password");  
         // Pair p;
+        if (checkUsername(UserName , type) && checkmail(Email,type)){
          ArrayList<Pair> values = new  ArrayList<Pair>();
          Pair pair = new Pair();
          Pair pair1 = new Pair();
@@ -116,6 +112,9 @@ public class AddAdminOrUser extends HttpServlet {
            int id = crud.insertRecord ("user" ,values );
            // log(l+"");
              session.setAttribute("UserID", id);
+             log(UserName);
+             session.setAttribute("UN",UserName);
+                        
              RequestDispatcher rd=request.getRequestDispatcher("JSP/HomePage.jsp");
              rd.forward(request,response);  
            
@@ -124,6 +123,12 @@ public class AddAdminOrUser extends HttpServlet {
         else if (type.equals("admin")){
         crud.insertRecord ("admin" ,values );
        
+        }
+        }
+        else {
+            out.print("UserName or Email is aleady taken");
+            RequestDispatcher rd=request.getRequestDispatcher("JSP/index.jsp");
+             rd.forward(request,response); 
         }
         processRequest(request, response);
     }
@@ -137,5 +142,65 @@ public class AddAdminOrUser extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+    
+    protected boolean checkUsername(String userName , String type){
+             
+        
+        //String name = request.getParameter("usernameR");
+        //HttpSession Session = request.getSession(true) ;
+        //String type = (String)Session.getAttribute("type");
+        System.out.println(userName);
+        Crud crud = new Crud ();
+        //PrintWriter out = response.getWriter();
+        ResultSet result = null ;
+        if (type.equalsIgnoreCase("admin")){
+           result = crud.select("admin","UserName",userName);
+        }  
+        else if (type.equalsIgnoreCase("user")){
+            result = crud.select("user","UserName",userName);
+        }
+        try {
+            if (result.next()){
+              //out.print("User name is already taken ");
+              return false ;
+            }
+            else {
+                return true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CheckOnUsername.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
 
+
+   protected boolean checkmail(String email, String type){     
+        // String email = request.getParameter("email");
+        //String type = request.getParameter("type");
+        Crud crud = new Crud ();
+       // PrintWriter out = response.getWriter();
+        ResultSet result = null ;
+        if (type.equalsIgnoreCase("admin")){
+           result = crud.select("admin","email",email);
+        }  
+        else if (type.equalsIgnoreCase("user")){
+            result = crud.select("user","email",email);
+        }
+        try {
+            if (result.next()){
+             // out.print("email is  taken ");
+             return false;
+            }
+            else {
+                return true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CheckOnUsername.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+        
+    }
 }
+    
+
+

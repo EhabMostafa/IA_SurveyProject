@@ -12,14 +12,17 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author norhan
  */
+@WebServlet("/CheckOnUsername")
 public class CheckOnUsername extends HttpServlet {
 
     /**
@@ -31,22 +34,7 @@ public class CheckOnUsername extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet CheckOnUsername</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet CheckOnUsername at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
+ 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -60,8 +48,11 @@ public class CheckOnUsername extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String name = request.getParameter("UserName");
-        String type = request.getParameter("type");
+        
+        String name = request.getParameter("usernameR");
+        HttpSession Session = request.getSession(true) ;
+        String type = (String)Session.getAttribute("type");
+        System.out.println(name);
         Crud crud = new Crud ();
         PrintWriter out = response.getWriter();
         ResultSet result = null ;
@@ -73,12 +64,12 @@ public class CheckOnUsername extends HttpServlet {
         }
         try {
             if (result.next()){
-              out.print("User name is taken ");
+              out.print("User name is already taken ");
             }
         } catch (SQLException ex) {
             Logger.getLogger(CheckOnUsername.class.getName()).log(Level.SEVERE, null, ex);
         }
-        processRequest(request, response);
+       
     }
 
     /**
@@ -89,11 +80,7 @@ public class CheckOnUsername extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
+    
 
     /**
      * Returns a short description of the servlet.

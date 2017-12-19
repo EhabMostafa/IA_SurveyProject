@@ -1,2 +1,4 @@
-/nbproject/private/
+/nbproject/
 /nbbuild/
+/dist/
+/WebContent/WEB-INF/web.xml

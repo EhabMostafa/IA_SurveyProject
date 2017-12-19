@@ -97,12 +97,15 @@ public class LogIn extends HttpServlet {
                     String ID = result.getString("id");
                     System.out.println("ID ely 3awzah "+ID);
                     session.setAttribute("UserID",ID);
-                    
+                    session.setAttribute("UN",n);
                     RequestDispatcher rd=request.getRequestDispatcher("JSP/HomePage.jsp");  // han7ot el page ely han3ml 3leha redirect
-                     rd.forward(request,response);  
+                     
+                    rd.forward(request,response);  
                  }  
                 else{  
-                    out.print("Sorry username or password error");  
+                     RequestDispatcher rd=request.getRequestDispatcher("JSP/index.jsp");  // han7ot el page ely han3ml 3leha redirect
+                     request.setAttribute("msg", "Wrong Usename or Password");
+                     rd.forward(request,response);  
                 }
             } 
             else {
@@ -113,15 +116,22 @@ public class LogIn extends HttpServlet {
                       String ID = result.getString("id");
                     System.out.println("ID ely 3awzah "+ID);
                     session.setAttribute("UserID",ID);
+                    session.setAttribute("UN",n);
+                    System.out.println(n);
                     RequestDispatcher rd=request.getRequestDispatcher("JSP/HomePage.jsp");  // han7ot el page ely han3ml 3leha redirect
-                     rd.forward(request,response);  
+                    
+                    rd.forward(request,response);  
                  }  
                 else{  
-                    out.print("Sorry username or password error");  
+                  RequestDispatcher rd=request.getRequestDispatcher("JSP/index.jsp");  // han7ot el page ely han3ml 3leha redirect
+                  request.setAttribute("msg", "Wrong Usename or Password");
+                  rd.forward(request,response);    
                 }
             }
                else {
-                   out.print("Sorry username is incorrect");
+                   RequestDispatcher rd=request.getRequestDispatcher("JSP/index.jsp");  // han7ot el page ely han3ml 3leha redirect
+                   request.setAttribute("msg", "Wrong Usename or Password");  
+                   rd.forward(request,response);  
                }
             }
         } catch (SQLException ex) {

@@ -25,21 +25,21 @@ public class Redirect extends HttpServlet {
 		String url= request.getRequestURI().substring(request.getContextPath().length());
 		if (url.equalsIgnoreCase("/AddSurveyForm"))
                 {  
-                RequestDispatcher rd = getServletContext().getRequestDispatcher("/HTML/AddSurvey.html");
+                RequestDispatcher rd = getServletContext().getRequestDispatcher("/JSP/AddSurvey.jsp");
                 rd.forward(request, response);
  	
 		}
                 if (url.equalsIgnoreCase("/ChangePAss"))
                 {  
-                   // System.out.println("hiiiii");
-                RequestDispatcher rd = getServletContext().getRequestDispatcher("/ChangePass.jsp");
+                    System.out.println("hiiiii");
+                RequestDispatcher rd = getServletContext().getRequestDispatcher("/JSP/ChangePass.jsp");
                 rd.forward(request, response);
  	
 		}
                 if (url.equalsIgnoreCase("/AddAdmin"))
                 {  
                    System.out.println("hiiiii");
-                RequestDispatcher rd = getServletContext().getRequestDispatcher("/AddAdmin.jsp");
+                RequestDispatcher rd = getServletContext().getRequestDispatcher("/JSP/AddAdmin.jsp");
                 rd.forward(request, response);
  	
 		}
