@@ -10,6 +10,7 @@ import DataBaseHandle.Crud;
 import DataBaseHandle.DBConnection;
 import DataBaseHandle.Pair;
 import Factory.DaosFactory;
+import Models.Answer;
 import Models.Question;
 import Models.Report;
 
@@ -47,7 +48,7 @@ public class QuestionDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		DBConnection.closeConnection();
 		
 		return question;
 	}
@@ -58,14 +59,17 @@ public class QuestionDao {
 		ArrayList<Pair> values= new ArrayList<>();
 		
 		values.add(new Pair(DataBaseConstants.QuestionQuestionCOLUM, a.getQuestion()));
+		values.add(new Pair(DataBaseConstants.QuestionTypeCOLUM, a.getType()));
 		values.add(new Pair(DataBaseConstants.QuestionsurveyIdCOLUM,surveyId+""));
 		// TODO Auto-generated method stub
 		
 		
 		
 		int id=crud.insertRecord(DataBaseConstants.QuestionTABLENAME, values);
+		if ( a.getAnswers()!= null)
 		for (int i=0;i < a.getAnswers().size();i++)
 		{
+			System.out.println(a.getAnswers().get(i).getAnswer()+" heeeeeeeeeeeeeeh");
 			DaosFactory daosFactory = new DaosFactory();
 			AnswerDao answerDao = daosFactory.getAnswerDao();
 			answerDao.addNewAnswer(a.getAnswers().get(i), id);
@@ -73,7 +77,6 @@ public class QuestionDao {
 		
 		
 	}
-	
 	
 	
 	public ArrayList<Question> getQuestionsBySurveyId(int surveyId)
@@ -108,5 +111,9 @@ public class QuestionDao {
 		
 		return questions ;
 	}
+	
+	
+	
+	
 	
 }

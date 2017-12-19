@@ -1,5 +1,7 @@
 
 
+<%@page import="Models.Question"%>
+<%@page import="Models.Survey"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -85,11 +87,79 @@
 			<div class="fh5co-narrow-content">
 				<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">Fill Survey</h2>
 				<div class="row animate-box" data-animate-effect="fadeInLeft" >
+                               
+                        <% Survey survey= (Survey)request.getAttribute("fillSurvey") ;%>
+                        <h3><%out.print (survey.getName()); %></h3>
+                        <h3><%out.print (survey.getDescription()); %></h3>
+                        
+                        <% for (int i=0;i<survey.getQuestions().size();i++)
+                       		 {
+                        	
+								out.print (survey.getQuestions().get(i).getQuestion());
+								out.print ("<br>");
+								
+		                        if (survey.getQuestions().get(i).getType().equals("MCQ"))
+		                        {
+		                        	%>
+		                        	<form action="addAnswers" onsubmit="<% request.setAttribute("qq",survey.getQuestions().get(i).getId() );
+		                        	
+		                        			request.setAttribute("ss",survey.getId() );
+		                        	%>">
+		                        	<%
+		                        	
+		                        	for (int j=0;j<survey.getQuestions().get(i).getAnswers().size();j++){
+		                        		
+		                        		out.print("<input type='submit' name= 'answer'  value='"+survey.getQuestions().get(i).getAnswers().get(j).getAnswer()+
+		                        				"'  />");
+		                        	
+		                        	}
+		                        	
+		                        	
+		                        	%>
+		                        	
+		                        	<input type="text"  name='q' style='visibility: hidden' value='<% out.print (survey.getQuestions().get(i).getId());%>'/>
+		                        	
+		                        	<input type="text"  name='s' style='visibility: hidden' value='<% out.print (survey.getId());%>'/>
+		                        	</form>
+		                        	<%
+		                        }
+		                        
+		                        else if (survey.getQuestions().get(i).getType().equals("TF"))
+		                        {
+		                        	 %> True  <input type="radio" name="Question" size="15">
+                                      False  <input type="radio" name="Question" size="15">
+                                      <%
+		                        }
+		                        else {
+		                        	%>
+		                        	<form action="addAnswers" >
+		                        	
+		                        	<input type="text" name = answer />
+		                        	
+		                        	<input type="text"  name='q' style='visibility: hidden' value='<% out.print (survey.getQuestions().get(i).getId());%>'/>
+		                        	
+		                        	<input type="text"  name='s' style='visibility: hidden' value='<% out.print (survey.getId());%>'/>
+		                        	<input type="submit" name=free  > 
+		                        	</form>
+		                        	<%
+		                        }
+		                        out.print ("<br>");
+		                        out.print ("<br>");
+		                        
+		                        
+		                      }
+                        	
+                        	%>
+                        
+                        
+                        
+                        
+                               
                                         
 				</div>
 			
-                                </div>
-                    </div>
+			</div>
+		</div>
 
         </div>
 

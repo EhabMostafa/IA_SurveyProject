@@ -51,6 +51,7 @@ public class ReportDao {
 				report.setSurveyId(res.getInt(DataBaseConstants.REPORTCOLUMsurvey));
 				report.setId(reportId);
 				report.setUserId(res.getInt(DataBaseConstants.REPORTCOLUMUSERID));
+				DBConnection.closeConnection();
 				return report;
 			}
 		} catch (SQLException e) {

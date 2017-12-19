@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
     <welcome-file-list>
         <welcome-file>JSP/index.jsp</welcome-file>
@@ -67,3 +68,69 @@
         </session-timeout>
     </session-config>
 </web-app>
+=======
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <servlet-name>ChangePassWord</servlet-name>
+    <servlet-class>ChangePassWord</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AddAdminOrUser</servlet-name>
+    <servlet-class>AddAdminOrUser</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>SuspendSurvey</servlet-name>
+    <servlet-class>SuspendSurvey</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>SuspendUser</servlet-name>
+    <servlet-class>SuspendUser</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>LogIn</servlet-name>
+    <servlet-class>LogIn</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DeleteSurvey</servlet-name>
+    <servlet-class>DeleteSurvey</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>Redirect</servlet-name>
+    <servlet-class>Servltes.Redirect</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ChangePassWord</servlet-name>
+    <url-pattern>/ChangePassWord</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddAdminOrUser</servlet-name>
+    <url-pattern>/AddAdminOrUser</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SuspendSurvey</servlet-name>
+    <url-pattern>/SuspendSurvey</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SuspendUser</servlet-name>
+    <url-pattern>/SuspendUser</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LogIn</servlet-name>
+    <url-pattern>/LogIn</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DeleteSurvey</servlet-name>
+    <url-pattern>/DeleteSurvey</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Redirect</servlet-name>
+    <url-pattern>/Redirect</url-pattern>
+  </servlet-mapping>
+  <session-config>
+    <session-timeout>30</session-timeout>
+  </session-config>
+</web-app>
+>>>>>>> 6f89207a4c058743bcc8c1ecfcf8dd08dc76039f

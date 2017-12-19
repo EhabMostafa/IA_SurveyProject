@@ -20,38 +20,38 @@
 	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 	
 	<!-- Animate.css -->
-	<link rel="stylesheet" href="CSS/animate.css">
+	<link rel="stylesheet" href="/CSS/animate.css">
 	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="CSS/icomoon.css">
+	<link rel="stylesheet" href="/CSS/icomoon.css">
 	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="CSS/bootstrap.css">
+	<link rel="stylesheet" href="/CSS/bootstrap.css">
 	<!-- Owl Carousel -->
-	<link rel="stylesheet" href="CSS/owl.carousel.min.css">
-	<link rel="stylesheet" href="CSS/owl.theme.default.min.css">
+	<link rel="stylesheet" href="/CSS/owl.carousel.min.css">
+	<link rel="stylesheet" href="/CSS/owl.theme.default.min.css">
 	<!-- Theme style  -->
-	<link rel="stylesheet" href="CSS/style.css">
+	<link rel="stylesheet" href="/CSS/style.css">
 
 	<!-- Modernizr JS -->
-	<script src="JavascriptCSS/modernizr-2.6.2.min.js"></script>
+	<script src="/JavascriptCSS/modernizr-2.6.2.min.js"></script>
         
 	<!-- jQuery -->
-	<script src="JavascriptCSS/jquery.min.js"></script>
+	<script src="/JavascriptCSS/jquery.min.js"></script>
 	<!-- jQuery Easing -->
-	<script src="JavascriptCSS/jquery.easing.1.3.js"></script>
+	<script src="/JavascriptCSS/jquery.easing.1.3.js"></script>
 	<!-- Bootstrap -->
-	<script src="JavascriptCSS/bootstrap.min.js"></script>
+	<script src="/JavascriptCSS/bootstrap.min.js"></script>
 	<!-- Carousel -->
-	<script src="JavascriptCSS/owl.carousel.min.js"></script>
+	<script src="/JavascriptCSS/owl.carousel.min.js"></script>
 	<!-- Stellar -->
-	<script src="JavascriptCSS/jquery.stellar.min.js"></script>
+	<script src="/JavascriptCSS/jquery.stellar.min.js"></script>
 	<!-- Waypoints -->
-	<script src="JavascriptCSS/jquery.waypoints.min.js"></script>
+	<script src="/JavascriptCSS/jquery.waypoints.min.js"></script>
 	<!-- Counters -->
-	<script src="JavascriptCSS/jquery.countTo.js"></script>
+	<script src="/JavascriptCSS/jquery.countTo.js"></script>
 	
 	
 	<!-- MAIN JS -->
-	<script src="JavascriptCSS/main.js"></script>
+	<script src="/JavascriptCSS/main.js"></script>
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
@@ -64,7 +64,7 @@
 		<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
 		<aside id="fh5co-aside" role="complementary" class="border js-fullheight">
 
-			<h1 id="fh5co-logo"><a href=""><img src="Resources/logo.png" alt="Free HTML5 Bootstrap Website Template"></a></h1>
+			<h1 id="fh5co-logo"><a href=""><img src="/Resources/logo.png" alt="Free HTML5 Bootstrap Website Template"></a></h1>
 			<nav id="fh5co-main-menu" role="navigation">
 				<ul>
                                     <% HttpSession Session = request.getSession(true) ;

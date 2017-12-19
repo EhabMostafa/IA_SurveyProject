@@ -18,7 +18,7 @@ public class UserAnswerDao {
 	{
 				ArrayList<Pair> values= new ArrayList<>();
 		values.add(new Pair(DataBaseConstants.UserAnswerCOLUManswer, answer));
-		values.add(new Pair(DataBaseConstants.UserAnswerCOLUMuserNameVisibile, userNameVisibile+""));
+		values.add(new Pair(DataBaseConstants.UserAnswerCOLUMuserNameVisibile, (userNameVisibile==false) ?"0":"1" +""));
 		values.add(new Pair(DataBaseConstants.UserAnswerCOLUMquestionId,questionId+""));
 		values.add(new Pair(DataBaseConstants.UserAnswerCOLUMuserId,UserId+""));
 		// TODO Auto-generated method stub

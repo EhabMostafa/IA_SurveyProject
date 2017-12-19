@@ -91,7 +91,7 @@
                                     ArrayList<TempSurvey> surveys=(ArrayList<TempSurvey>) request.getAttribute("own");
                                     for (int i=0;i<surveys.size();i++){
                      String html="<div class='col-md-4 col-sm-6 col-xs-6 col-xxs-12 work-item'>"+
-                                 "<a href=''>"+
+                                 "<a href='getSurveyById?id="+surveys.get(i).getId()+"'>"+
                                  "<img src='Resources/work_1.jpg' class='img-responsive'>"+
                                  "<h3 class='fh5co-work-title'>"+
                                  surveys.get(i).getName()+
