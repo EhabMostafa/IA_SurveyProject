@@ -9,10 +9,9 @@
 
       <link rel="stylesheet" href="CSS/style2.css">
    <script src='https://www.google.com/recaptcha/api.js'></script>
+                        <script src='https://www.google.com/recaptcha/api.js'></script>
   
 </head>
-<!-- background:url(https://raw.githubusercontent.com/khadkamhn/day-01-login-form/master/img/bg.jpg) no-repeat center;
--->
 <body>
   <div class="login-wrap">
       
@@ -95,7 +94,8 @@
 					<label>Male</label>   <input id='gender'  name='gender' type='radio'  class='input' value='male' checked="true">
                                         
 				</div>
-                        
+                        <div class="g-recaptcha" data-sitekey="6LfYmD0UAAAAAM85RpfVjGDiP1YFTACVsViCx_jK"></div>
+
                                
 				<div class="group">
                                   

@@ -127,8 +127,6 @@ public class AddAdminOrUser extends HttpServlet {
         }
         else {
             out.print("UserName or Email is aleady taken");
-            RequestDispatcher rd=request.getRequestDispatcher("JSP/index.jsp");
-             rd.forward(request,response); 
         }
         processRequest(request, response);
     }

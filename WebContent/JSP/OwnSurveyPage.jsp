@@ -98,6 +98,9 @@
                                  "</h3>"+
                                  "<p>"+surveys.get(i).getDescription()+"</p>"+
 			         "</a>"+
+                             
+                             "<a href='stat?id="+surveys.get(i).getId()+"' >statistics</a>"+
+                             
                                  "</div>";
                                  out.print(html);
                                   }
