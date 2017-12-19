@@ -75,7 +75,7 @@ Crud crud ;
 		values.add(new Pair(DataBaseConstants.SurveynameCOLUM, survey.getName()));
 		values.add(new Pair(DataBaseConstants.SurveydescriptionCOLU, survey.getDescription()));
 		values.add(new Pair(DataBaseConstants.SurveyuserIdCOLUM,id+""));
-		values.add(new Pair(DataBaseConstants.SurveysuspendCOLUM,"false"));
+		values.add(new Pair(DataBaseConstants.SurveysuspendCOLUM,"0"));
 		// TODO Auto-generated method stub
 		 int surveyId=crud.insertRecord(DataBaseConstants.SurveyTABLENAME, values);
 		DaosFactory daosFactory = new DaosFactory();
@@ -90,6 +90,18 @@ Crud crud ;
 		} 
 		
 	}
+	
+	public int  addNewSurvey1(Models.Survey survey,int id )
+	{
+		ArrayList<Pair> values= new ArrayList<>();
+		values.add(new Pair(DataBaseConstants.SurveynameCOLUM, survey.getName()));
+		values.add(new Pair(DataBaseConstants.SurveydescriptionCOLU, survey.getDescription()));
+		values.add(new Pair(DataBaseConstants.SurveyuserIdCOLUM,id+""));
+		values.add(new Pair(DataBaseConstants.SurveysuspendCOLUM,"0"));
+		// TODO Auto-generated method stub
+		 int surveyId=crud.insertRecord(DataBaseConstants.SurveyTABLENAME, values);
+		 return 	surveyId;	
+	}
 
 	public Survey getSurveyById(int surveyId)
 	{
@@ -102,8 +114,7 @@ Crud crud ;
 		try {
 			if  (res.next())
 			{
-				if  (res.next())
-				{
+				
 					
 							survey.setDescription( res.getString(DataBaseConstants.SurveydescriptionCOLU));
 							survey.setName( res.getString(DataBaseConstants.SurveynameCOLUM));
@@ -114,7 +125,7 @@ Crud crud ;
 					survey.setQuestions(q.getQuestionsBySurveyId(surveyId));
 				
 			
-			}
+			
 		}
 			
 		} catch (SQLException e) {

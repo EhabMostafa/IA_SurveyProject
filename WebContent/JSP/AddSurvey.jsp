@@ -105,11 +105,10 @@
 			<div class="fh5co-narrow-content">
 				<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">Add New Survey</h2>
                                  
-                                <form action=addSurvey"  onsubmit="<%  s= survey((String)request.getParameter("SurveyName"),(String)request.getParameter("SurveyDescription"));
-                                       s.setQuestions(questions);
-                                       request.setAttribute("lolo", s);
-                                       %>" >
+                               
 				<div class="row animate-box" data-animate-effect="fadeInLeft" >
+				
+				 <form action="addSurvey1"   >
                                     Survey Name
                                     <br>
                                      <input type="text" name="SurveyName" size="100"><br>
@@ -117,101 +116,18 @@
                                      <input type="text" name="SurveyDescription" size="100"><br>
                                     
                                     <br>
+                                    <center>
+					            <input type="submit" name="survey" value="finish" size="150"  ><br><br>
+					            </center>
+					                    </form>
+                                </div>
                                     
-                                    <%!  Question MCQ(String a1,String a2,String a3,String a4,String Question){
-                                       
-                                                Question qq = new Question();
-                                                qq.setType("MCQ");
-                                                qq.setQuestion(Question);
-                                                ArrayList<Answer> s = new ArrayList<Answer>();
-                                                s.add(new Answer(a1));
-                                                s.add(new Answer(a2));
-                                                s.add(new Answer(a3));
-                                                s.add(new Answer(a4));
-                                                qq.setAnswers(s);
-                                                return  qq;
-                                                
-                                    }
-                                    %>
-                                    
-                                    
-                                     <%!  Question TF(String a1,String Question){
-                                       
-                                                Question qq = new Question();
-                                                qq.setType("TF");
-                                                qq.setQuestion(Question);
-                                                ArrayList<Answer> s = new ArrayList<Answer>();
-                                                s.add(new Answer(a1));
-                                               
-                                                qq.setAnswers(s);
-                                                return  qq;
-                                                
-                                    }
-                                    %>
-                                     <%!  Question FQ(String Question){
-                                       
-                                                Question qq = new Question();
-                                                qq.setType("TF");
-                                                qq.setQuestion(Question);
-                                                ArrayList<Answer> s = new ArrayList<Answer>();
-                                                qq.setAnswers(s);
-                                                return  qq;
-                                                
-                                    }
-                                    %>
-                                    
-                                    <form id="hi" onsubmit="<%Question qq=MCQ((String)request.getParameter("a1"),(String)request.getParameter("a2"),
-                                   (String) request.getParameter("a3"),(String)request.getParameter("a4"),(String)request.getParameter("Question"));
-                                    System.out.println(qq.getQuestion());
-                                    questions.add(qq);
-                                    %>">
-                                         MCQ:
-                                         <br>
-                                         Question 
-                                         <br>
-                                         <input type="text" name="Question" size="100" form="hi"><br><br>
-                                        A1  <input type="text" name="a1" size="15" form="hi">
-                                        A2  <input type="text" name="a2" size="15" form="hi">
-                                        A3  <input type="text" name="a3" size="15" form="hi">
-                                        A4  <input type="text" name="a4" size="15" form="hi">
-                                        
-                                        
-                                        <input type ="submit" name ="MCQSubmit" value="Add" >
-                                     </form>
-                                     <br> <br>
-                                     <form  onsubmit="<%Question TF=TF ((String)request.getParameter("a1"),(String)request.getParameter("Question"));
-                                            questions.add(TF);
-                                            %>"  > 
-                                         TrueFalse:
-                                         <br>
-                                         Question 
-                                         <br>
-                                         <input type="text" name="Question" size="100"><br><br>
-                                         True  <input type="radio" name="Question" size="15">
-                                            False  <input type="radio" name="Question" size="15">
-                                            
-                                             <input type ="submit" name ="TFSubmit" >
-                                     </form>
-                                     
-                                     <br> <br>
-                                     <form onsubmit="<%Question FQ=FQ ((String)request.getParameter("Question"));
-                                            questions.add(TF);
-                                            %>"  > 
-                                         Free Answer:
-                                         <br>
-                                         Question 
-                                         <br>
-                                         <input type="text" name="Question" size="100"><br><br>
-                                           <input type="submit" name="Question" size="100"><br><br>
-                                     </form>
+                                
                                      
 				</div>
-			
-                                </div>
-                                         <center>
-            <input type="submit" name="survey" value="finish" size="150"  ><br><br>
-            </center>
-                    </form>
+				
+					             
+                      
                     </div>
 
         </div>

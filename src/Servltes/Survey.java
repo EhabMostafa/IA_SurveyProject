@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 //import com.google.gson.Gson;
 
@@ -24,7 +25,7 @@ import javax.servlet.RequestDispatcher;
  * Servlet implementation class Survey
  */
 
-@WebServlet({ "/Survey", "/getAllSurvies", "/getSurviesByuserId","/addSurvey","/getSurveyById" })
+@WebServlet({ "/Survey", "/getAllSurvies", "/getSurviesByuserId","/addSurvey","/getSurveyById","/addSurvey1" })
 public class Survey extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private DaosFactory daosFactory;
@@ -67,19 +68,26 @@ public class Survey extends HttpServlet {
 			
 		}
 
-                
-        if (url.equalsIgnoreCase("/addSurvey"))
+      
+        
+        if (url.equalsIgnoreCase("/addSurvey1"))
 		{
-			addSurvey(request,response);
+        	
+        	System.out.println(request.getParameter("SurveyName"));
+			addSurvey1(request,response);
+			 RequestDispatcher rd = getServletContext().getRequestDispatcher("/JSP/addQuestion.jsp");
+	            rd.forward(request, response);
+//			System.out.println("Done");
 			
 			
 		}
 
+
                 if (url.equalsIgnoreCase("/Survey"))
 		{
                     System.out.println("hiiii");
-                    //String s=request.getParameter("fruits");
-                    //System.out.println(s);
+//                    String s=request.getParameter("id");
+//                    System.out.println(s);
 			
 		}
                 if (url.equalsIgnoreCase("/getSurveyById"))
@@ -88,6 +96,19 @@ public class Survey extends HttpServlet {
 			
 			
 		}
+	}
+
+private void addSurvey1(HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		SurveyDao surveyDao= daosFactory.getSurveyDao();
+		
+		Models.Survey s = new Models.Survey();
+		s.setName(request.getParameter("SurveyName"));
+		s.setDescription(request.getParameter("SurveyDescription"));
+		HttpSession session = request.getSession();
+		int   id = Integer.parseInt( session.getAttribute("UserID").toString());
+		int n=  surveyDao.addNewSurvey1(s, id);
+		session .setAttribute("sId", n);
 	}
 
 private void addSurvey(HttpServletRequest request,  HttpServletResponse response) {
@@ -104,7 +125,9 @@ private void addSurvey(HttpServletRequest request,  HttpServletResponse response
 		// TODO Auto-generated method stub
 		//int  userId=Integer.parseInt( request.getParameter("userId"));
 		SurveyDao surveyDao= daosFactory.getSurveyDao();
-		ArrayList<TempSurvey> surveys= surveyDao.getSurviesByuserId(1);
+		HttpSession session = request.getSession();
+		int   id = Integer.parseInt( session.getAttribute("UserID").toString());
+		ArrayList<TempSurvey> surveys= surveyDao.getSurviesByuserId(id);
 		request.setAttribute("own", surveys);
                 //result.put("result", "true");
 		//result.put("report", surveys);
@@ -120,10 +143,53 @@ private void addSurvey(HttpServletRequest request,  HttpServletResponse response
 	}
 private void getSurveyById(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-                System.out.println(request.getParameter("N")+"hi");
-		//int id  = Integer.parseInt( request.getParameter("SID"));
-		//SurveyDao surveyDao= daosFactory.getSurveyDao();
-		//Models. Survey survey= surveyDao.getSurveyById( id);
+//                System.out.println(request.getParameter("N")+"hi");
+		int id  = Integer.parseInt( request.getParameter("id"));
+		SurveyDao surveyDao= daosFactory.getSurveyDao();
+		Models. Survey survey= surveyDao.getSurveyById( id);
+		
+		request.setAttribute("fillSurvey", survey);
+		  RequestDispatcher rd = getServletContext().getRequestDispatcher("/JSP/FillSurvey.jsp");
+          try {
+			rd.forward(request, response);
+		} catch (ServletException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+//		 PrintWriter out;
+//		try {
+//			out = response.getWriter();
+//			 
+//			  String html="<form action=\"getSurveyById\" class=\"col-md-4 col-sm-6 col-xs-6 col-xxs-12 work-item\">"+
+//                      "<input type=\"submit\">"+
+//                      "<img src=\"Resources/work_1.jpg\" class=\"img-responsive\">"+
+//                      "<h3 name=\"N\" class=\"fh5co-work-title\">"+
+//                      survey.getName()+
+//                      "</h3>"+
+//                      "<p>"+survey.getDescription()+"</p>"+
+//                      
+//                      
+//	         "</a>"+
+//                      "</form>";
+//			  
+//			  String q="";
+//			  for (int i=0;i<survey.getQuestions().size();i++)
+//              {
+//				 q+= "<p>"+survey.getQuestions().get(i).getQuestion()+"</p>\n";
+//				 
+//              }
+//			  
+//                      out.print(html+"\n"+q);
+//                      
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+      
+           
+                          
 		
 		
 	}
@@ -157,7 +223,7 @@ private void getSurveyById(HttpServletRequest request, HttpServletResponse respo
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		System.out.println("kjlfhuigydufytscatxdfgcvhjfkb"+  request.getParameter("em"));
 	}
 
 }

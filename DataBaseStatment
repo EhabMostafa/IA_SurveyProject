@@ -53,7 +53,7 @@ answer varchar(250),
 userNameVisibile boolean, 
 questionId int ,
 userId int ,
-FOREIGN KEY(userId) REFERENCES User(id)ON DELETE CASCADE,
+FOREIGN KEY(userId) REFERENCES User(id) ON DELETE CASCADE,
 FOREIGN KEY(questionId) REFERENCES Question(id) ON DELETE CASCADE
 
 );

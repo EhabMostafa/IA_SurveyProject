@@ -31,7 +31,7 @@ public class DataBaseConstants {
 	//answer 
 	public static String AnswerTABLENAME= "Answer";
 	public static String AnswerIdCOLU= "id";
-	public static String AnswerAnswerCOLUM= "name";
+	public static String AnswerAnswerCOLUM= "answer";
 	public static String AnswerQuestionIdCOLUM= "questionId";
 	
 	
